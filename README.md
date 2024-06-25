@@ -24,9 +24,7 @@ without using pre-built sets of statistical classes, functions or libraries
 ## Steps to run the program on your computer:
 1. Download code from GitHub and extract archive or clone the [repo](https://github.com/mrmax24/data-stats)
 2. Open project in IDE
-3. Make sure you have JDK and Maven installed on your computer (run the command `java -version` and `mvn -version`)
+3. Make sure you have JDK and Maven installed on your computer running the command `java -version` and `mvn -version`)
 4. Open your command prompt or terminal and navigate to the root directory of the extracted Java project
 5. Use Maven to build the project by running the following command `mvn clean install`
-6. Run Main class using button or follow the steps below if you want to use the terminal.
-7. Compile all Java files recursively from the root directory running the following command `javac -cp src/main/java $(find src/main/java -name "*.java")`
-8. Enter command `java -cp src/main/java app.Main` to run Main class
+6. Run `Main` class using button or run the following command `java -jar target/data-stats-1.0-SNAPSHOT.jar`
