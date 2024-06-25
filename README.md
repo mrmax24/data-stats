@@ -1,4 +1,5 @@
-# Task description
+# Data statistics
+## Task description
 The task involves processing a large set of integers from a file and finding the following values:
 
 1. Maximum number in the file
@@ -8,7 +9,10 @@ The task involves processing a large set of integers from a file and finding the
 5. Longest increasing sequence of numbers
 6. Longest decreasing sequence of numbers
 
-The proposed solution method should find all these values within 40 seconds.
+```
+The proposed solution method should find all these values within 40 seconds 
+without using pre-built sets of statistical classes, functions or libraries
+```
 
 ## Used technologies:
 | Technology            | Version   |
@@ -23,4 +27,6 @@ The proposed solution method should find all these values within 40 seconds.
 3. Make sure you have JDK and Maven installed on your computer (run the command `java -version` and `mvn -version`)
 4. Open your command prompt or terminal and navigate to the root directory of the extracted Java project
 5. Use Maven to build the project by running the following command `mvn clean install`
-6. Run Main class using button or enter command `javac Main.java` after navigating to the appropriate directory
+6. Run Main class using button or follow the steps below if you want to use the terminal.
+7. Compile all Java files recursively from the root directory running the following command `javac -cp src/main/java $(find src/main/java -name "*.java")`
+8. Enter command `java -cp src/main/java app.Main` to run Main class

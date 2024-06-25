@@ -1,10 +1,10 @@
-package org.example;
+package app;
 
+import app.processor.SequenceProcessor;
+import app.processor.StatisticsProcessor;
+import app.reader.DataReader;
+import app.writer.ResultWriter;
 import java.util.List;
-import org.example.processor.SequenceProcessor;
-import org.example.processor.StatisticsProcessor;
-import org.example.reader.DataReader;
-import org.example.writer.ResultWriter;
 
 public class Main {
     private static final String INPUT_FILE_NAME = "src/main/resources/10m.txt";
