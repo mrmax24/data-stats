@@ -28,5 +28,5 @@ without using pre-built sets of statistical classes, functions or libraries
 4. Open your command prompt or terminal and navigate to the root directory of the extracted Java project
 5. Use Maven to build the project by running the following command `mvn clean install`
 6. Run `Main` class using button or run the following command `java -jar target/data-stats-1.0-SNAPSHOT.jar`
-7. After executing the code, a file named **report.txt** with the calculation results will appear in the **src/main/resources** folder
+7. After executing the code, a file named **report.txt** with the calculation results will update in the **src/main/resources** folder.
 8. Enjoy using the app!
