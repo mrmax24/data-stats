@@ -1,10 +1,12 @@
-package app.fileservice;
+package app.service.impl;
 
+import app.service.ResultWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class ResultWriter {
+public class ResultWriterImpl implements ResultWriter {
+    @Override
     public void writeToFile(String info, String filePath) {
         try {
             Files.write(Path.of(filePath), info.getBytes());

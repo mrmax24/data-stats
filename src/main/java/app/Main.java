@@ -1,10 +1,12 @@
 package app;
 
-import app.fileservice.DataReader;
-import app.fileservice.ResultWriter;
-import app.processor.SequenceProcessor;
-import app.processor.StatisticsProcessor;
-import app.service.ReportGenerator;
+import app.processor.impl.SequenceProcessorImpl;
+import app.processor.impl.StatisticsProcessorImpl;
+import app.service.DataReader;
+import app.service.impl.DataReaderImpl;
+import app.service.impl.NumberParserImpl;
+import app.service.impl.ReportGeneratorImpl;
+import app.service.impl.ResultWriterImpl;
 import java.util.List;
 
 public class Main {
@@ -15,21 +17,21 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        DataReader dataReader = new DataReader();
+        DataReader dataReader = new DataReaderImpl(new NumberParserImpl());
         List<Integer> numbers = dataReader.readNumbersFromFile(INPUT_FILE_PATH);
 
-        StatisticsProcessor statisticsProcessor = new StatisticsProcessor(numbers);
-        SequenceProcessor sequenceProcessor = new SequenceProcessor(numbers);
+        StatisticsProcessorImpl statisticsProcessorImpl = new StatisticsProcessorImpl(numbers);
+        SequenceProcessorImpl sequenceProcessorImpl = new SequenceProcessorImpl(numbers);
 
-        ReportGenerator reportGenerator = new ReportGenerator(
-                statisticsProcessor, sequenceProcessor);
-        String report = reportGenerator.generateReport();
+        ReportGeneratorImpl reportGeneratorImpl = new ReportGeneratorImpl(
+                statisticsProcessorImpl, sequenceProcessorImpl);
+        String report = reportGeneratorImpl.generateReport();
 
         long end = System.currentTimeMillis();
         double timeInSeconds = (end - start) / MS_IN_SEC;
         report += String.format(System.lineSeparator() + EXECUTION_TIME_LABEL, timeInSeconds);
 
-        ResultWriter resultWriter = new ResultWriter();
-        resultWriter.writeToFile(report, OUTPUT_FILE_PATH);
+        ResultWriterImpl resultWriterImpl = new ResultWriterImpl();
+        resultWriterImpl.writeToFile(report, OUTPUT_FILE_PATH);
     }
 }
