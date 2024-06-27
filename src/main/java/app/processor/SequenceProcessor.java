@@ -4,7 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SequenceProcessor {
-    public List<Integer> findLongestIncreasingSequence(List<Integer> numbers) {
+    private final List<Integer> numbers;
+
+    public SequenceProcessor(List<Integer> numbers) {
+        this.numbers = new ArrayList<>(numbers);
+    }
+
+    public List<Integer> findLongestIncreasingSequence() {
         List<Integer> longest = new ArrayList<>();
         List<Integer> current = new ArrayList<>();
 
@@ -25,7 +31,7 @@ public class SequenceProcessor {
         return longest;
     }
 
-    public List<Integer> findLongestDecreasingSequence(List<Integer> numbers) {
+    public List<Integer> findLongestDecreasingSequence() {
         List<Integer> longest = new ArrayList<>();
         List<Integer> current = new ArrayList<>();
 
