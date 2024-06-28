@@ -1,8 +1,12 @@
 package app;
 
+import app.processor.SequenceProcessor;
+import app.processor.StatisticsProcessor;
 import app.processor.impl.SequenceProcessorImpl;
 import app.processor.impl.StatisticsProcessorImpl;
 import app.service.DataReader;
+import app.service.ReportGenerator;
+import app.service.ResultWriter;
 import app.service.impl.DataReaderImpl;
 import app.service.impl.NumberParserImpl;
 import app.service.impl.ReportGeneratorImpl;
@@ -20,18 +24,18 @@ public class Main {
         DataReader dataReader = new DataReaderImpl(new NumberParserImpl());
         List<Integer> numbers = dataReader.readNumbersFromFile(INPUT_FILE_PATH);
 
-        StatisticsProcessorImpl statisticsProcessorImpl = new StatisticsProcessorImpl(numbers);
-        SequenceProcessorImpl sequenceProcessorImpl = new SequenceProcessorImpl(numbers);
+        StatisticsProcessor statisticsProcessor = new StatisticsProcessorImpl(numbers);
+        SequenceProcessor sequenceProcessor = new SequenceProcessorImpl(numbers);
 
-        ReportGeneratorImpl reportGeneratorImpl = new ReportGeneratorImpl(
-                statisticsProcessorImpl, sequenceProcessorImpl);
-        String report = reportGeneratorImpl.generateReport();
+        ReportGenerator reportGenerator = new ReportGeneratorImpl(
+                statisticsProcessor, sequenceProcessor);
+        String report = reportGenerator.generateReport();
 
         long end = System.currentTimeMillis();
         double timeInSeconds = (end - start) / MS_IN_SEC;
         report += String.format(System.lineSeparator() + EXECUTION_TIME_LABEL, timeInSeconds);
 
-        ResultWriterImpl resultWriterImpl = new ResultWriterImpl();
+        ResultWriter resultWriterImpl = new ResultWriterImpl();
         resultWriterImpl.writeToFile(report, OUTPUT_FILE_PATH);
     }
 }

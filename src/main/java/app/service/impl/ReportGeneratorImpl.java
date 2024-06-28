@@ -1,7 +1,7 @@
 package app.service.impl;
 
-import app.processor.impl.SequenceProcessorImpl;
-import app.processor.impl.StatisticsProcessorImpl;
+import app.processor.SequenceProcessor;
+import app.processor.StatisticsProcessor;
 import app.service.ReportGenerator;
 
 public class ReportGeneratorImpl implements ReportGenerator {
@@ -12,26 +12,26 @@ public class ReportGeneratorImpl implements ReportGenerator {
     private static final String AVERAGE_LABEL = "Average";
     private static final String INC_SEQUENCE_LABEL = "Longest Increasing Sequence";
     private static final String DEC_SEQUENCE_LABEL = "Longest Decreasing Sequence";
-    private final StatisticsProcessorImpl statisticsProcessorImpl;
-    private final SequenceProcessorImpl sequenceProcessorImpl;
+    private final StatisticsProcessor statisticsProcessor;
+    private final SequenceProcessor sequenceProcessor;
 
-    public ReportGeneratorImpl(StatisticsProcessorImpl statisticsProcessorImpl,
-                               SequenceProcessorImpl sequenceProcessorImpl) {
-        this.statisticsProcessorImpl = statisticsProcessorImpl;
-        this.sequenceProcessorImpl = sequenceProcessorImpl;
+    public ReportGeneratorImpl(StatisticsProcessor statisticsProcessor,
+                               SequenceProcessor sequenceProcessor) {
+        this.statisticsProcessor = statisticsProcessor;
+        this.sequenceProcessor = sequenceProcessor;
     }
 
     @Override
     public String generateReport() {
         StringBuilder report = new StringBuilder();
-        appendLine(report, MAX_NUMBER_LABEL, statisticsProcessorImpl.findMax());
-        appendLine(report, MIN_NUMBER_LABEL, statisticsProcessorImpl.findMin());
-        appendLine(report, MEDIAN_LABEL, statisticsProcessorImpl.findMedian());
-        appendLine(report, AVERAGE_LABEL, statisticsProcessorImpl.findAverage());
+        appendLine(report, MAX_NUMBER_LABEL, statisticsProcessor.findMax());
+        appendLine(report, MIN_NUMBER_LABEL, statisticsProcessor.findMin());
+        appendLine(report, MEDIAN_LABEL, statisticsProcessor.findMedian());
+        appendLine(report, AVERAGE_LABEL, statisticsProcessor.findAverage());
         appendLine(report, INC_SEQUENCE_LABEL,
-                sequenceProcessorImpl.findLongestIncreasingSequence());
+                sequenceProcessor.findLongestIncreasingSequence());
         appendLine(report, DEC_SEQUENCE_LABEL,
-                sequenceProcessorImpl.findLongestDecreasingSequence());
+                sequenceProcessor.findLongestDecreasingSequence());
 
         return report.toString();
     }
