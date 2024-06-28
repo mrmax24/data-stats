@@ -35,7 +35,7 @@ public class StatisticsProcessorImpl implements StatisticsProcessor {
 
     @Override
     public double findMedian() {
-        sortList(numbers, 0, numbers.size() - 1);
+        sortList(0, numbers.size() - 1);
         int size = numbers.size();
         if (size % 2 != 0) {
             return numbers.get(size / 2);
@@ -53,15 +53,15 @@ public class StatisticsProcessorImpl implements StatisticsProcessor {
         return sum / (double) numbers.size();
     }
 
-    private void sortList(List<Integer> list, int low, int high) {
+    private void sortList(int low, int high) {
         if (low < high) {
-            int partitionIndex = partition(list, low, high);
-            sortList(numbers, low, partitionIndex - 1);
-            sortList(numbers, partitionIndex + 1, high);
+            int partitionIndex = partition(low, high);
+            sortList(low, partitionIndex - 1);
+            sortList(partitionIndex + 1, high);
         }
     }
 
-    private int partition(List<Integer> list, int low, int high) {
+    private int partition(int low, int high) {
         int keyElement = numbers.get(high);
         int i = (low - 1);
         for (int j = low; j < high; j++) {
