@@ -35,7 +35,7 @@ public class Main {
         double timeInSeconds = (end - start) / MS_IN_SEC;
         report += String.format(System.lineSeparator() + EXECUTION_TIME_LABEL, timeInSeconds);
 
-        ResultWriter resultWriterImpl = new ResultWriterImpl();
-        resultWriterImpl.writeToFile(report, OUTPUT_FILE_PATH);
+        ResultWriter resultWriter = new ResultWriterImpl();
+        resultWriter.writeToFile(report, OUTPUT_FILE_PATH);
     }
 }
